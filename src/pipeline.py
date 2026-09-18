@@ -16,13 +16,6 @@ class Pipeline:
         self.tests = tests
         self.output_path = output_path
 
-    def get_functions(self):
-        print(self.functions)
-    def get_test(self):
-        print(self.tests)
-    def get_output_path(self):
-        print(self.output_path)
-###################################
     def load_model(self) -> Small_LLM_Model:
         return Small_LLM_Model()
 

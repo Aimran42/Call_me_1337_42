@@ -1,21 +1,7 @@
 import src
 
-def res(lst):
-
-    pl = src.Pipeline(lst[0], lst[1], lst[2])
-    print("_________________Functions_________________")
-    pl.get_functions()
-
-    print("_________________Tests_________________")
-    pl.get_test()
-
-    print("_________________Output_________________")
-    pl.get_output_path()
-
-
 def main()-> int:
     try:
-        print("Hello my friend")
         lst = src.Parser.parsing()
 
         if not lst:
@@ -32,7 +18,6 @@ def main()-> int:
     except KeyboardInterrupt:
         print(" Please don' t kill terminal")
 
-    # res(lst)
     return 0
 
 if __name__ == "__main__":
