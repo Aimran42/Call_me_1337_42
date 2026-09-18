@@ -1,6 +1,6 @@
 from src.models import FunctionDefinition, TestPrompt, FunctionCallResult
 from typing  import Any, Dict, List, Optional
-from llm_sdk import Small_LLM_Model
+from llm_sdk.llm_sdk import Small_LLM_Model
 from pathlib import Path
 
 import json
