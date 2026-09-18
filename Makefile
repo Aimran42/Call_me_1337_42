@@ -1,11 +1,6 @@
 UV= uv
 PYTHON = $(UV) run --active python3
 
-export UV_CACHE_DIR := /goinfre/$(USER)/.cache/uv
-export UV_LINK_MODE := copy
-export HF_HOME := /goinfre/$(USER)/.cache/huggingface
-
-
 all: install run
 
 
