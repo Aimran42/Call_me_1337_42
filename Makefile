@@ -25,8 +25,8 @@ debug:
 
 clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} +
-	rm -f data/output/function_calling_results.json
+	rm -fr data/output
 	rm -fr .mypy_cache
-	rm -fr .venv
+
 
 .PHONY: all install run lint lint-strict debug clean
