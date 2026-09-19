@@ -1,3 +1,12 @@
+"""Package initializer of callmemaybe project.
+
+Notes
+-----
+Re-exports the primary classes and exceptions from the ``models``,
+``parsing``, ``constrained_decoding``, and ``pipeline`` submodules so
+they can be imported directly from ``src``.
+"""
+
 from src.models import FunctionDefinition, FunctionParameter, TestPrompt, FunctionCallResult
 from src.constrained_decoding import ConstrainedDecoder, TokenTrie
 from src.parsing import Parser, ParsingErr
