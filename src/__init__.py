@@ -7,9 +7,10 @@ Re-exports the primary classes and exceptions from the ``models``,
 they can be imported directly from ``src``.
 """
 
-from src.models import FunctionDefinition, FunctionParameter, TestPrompt, FunctionCallResult
+from src.models import FunctionDefinition, FunctionParameter, TestPrompt
 from src.constrained_decoding import ConstrainedDecoder, TokenTrie
 from src.parsing import Parser, ParsingErr
+from src.models import FunctionCallResult
 from src.pipeline import Pipeline
 
 __all__ = [

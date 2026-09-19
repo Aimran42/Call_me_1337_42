@@ -15,7 +15,7 @@ class Parser:
     def parse_args(self) -> argparse.Namespace:
         parser = argparse.ArgumentParser(
             prog="src",
-            description="Run function-calling tests against function definitions.",
+            description="Run function-calling tests against function def",
         )
         parser.add_argument(
             "--functions_definition",
@@ -58,7 +58,8 @@ class Parser:
                 raise ParsingErr(f"{path} must contain a JSON array")
             return [FunctionDefinition(**item) for item in raw_data]
         except ValidationError as err:
-            raise ParsingErr(f"Invalid function definition in {path}: {err}") from err
+            raise ParsingErr(
+                f"Invalid function definition in {path}: {err}") from err
 
     @staticmethod
     def parse_function_calling_tests(path: str) -> List[TestPrompt]:
@@ -74,7 +75,7 @@ class Parser:
         args = Parser.parse_args(self)
 
         try:
-            functions = Parser.parse_functions_definition(args.functions_definition)
+            ft = Parser.parse_functions_definition(args.functions_definition)
             tests = Parser.parse_function_calling_tests(args.input)
         except ParsingErr as e:
             print(f"Error: {e}")
@@ -93,4 +94,4 @@ class Parser:
             print(f"Error in output file :\n{e}")
             return None
 
-        return (functions, tests, output_path)
+        return (ft, tests, output_path)

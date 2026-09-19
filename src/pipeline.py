@@ -31,7 +31,8 @@ class Pipeline:
         if self.decoder is None:
             return None
         function = self.decoder.select_function(test.prompt, self.functions)
-        return FunctionCallResult(prompt=test.prompt, name=function.name, parameters={})
+        return FunctionCallResult(prompt=test.prompt,
+                                  name=function.name, parameters={})
 
     def process_all_tests(self) -> List[FunctionCallResult]:
         results: List[FunctionCallResult] = []
