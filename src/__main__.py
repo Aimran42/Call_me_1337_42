@@ -23,7 +23,6 @@ def main() -> int:
         return 0
     except KeyboardInterrupt:
         print("\nInterrupted, exiting.")
-        return -1
 
 if __name__ == "__main__":
     main()
