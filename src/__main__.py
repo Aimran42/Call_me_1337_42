@@ -1,3 +1,11 @@
+"""Entry point of callmemaybe project aka src package.
+
+Notes
+-----
+Parses the input files, runs the function-calling pipeline, and
+writes the results to the configured output path.
+"""
+
 import src
 
 
