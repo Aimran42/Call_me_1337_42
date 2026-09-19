@@ -3,7 +3,7 @@ import src
 
 def main() -> int:
     try:
-        lst = src.Parser.parsing()
+        lst = src.Parser().parsing()
         if not lst:
             return 1
 
@@ -20,9 +20,11 @@ def main() -> int:
             return 1
 
         print(f"Wrote {len(results)} results to {output_path}")
-        return 0
     except KeyboardInterrupt:
         print("\nInterrupted, exiting.")
+
+    return 0
+
 
 if __name__ == "__main__":
     main()

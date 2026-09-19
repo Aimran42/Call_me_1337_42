@@ -8,7 +8,9 @@ from src.models import FunctionDefinition, TestPrompt, FunctionCallResult
 
 
 class Pipeline:
-    def __init__(self, functions: List[FunctionDefinition], tests: List[TestPrompt], output_path: Path) -> None:
+    def __init__(self, functions: List[FunctionDefinition],
+                 tests: List[TestPrompt],
+                 output_path: Path) -> None:
         self.functions = functions
         self.tests = tests
         self.output_path = output_path

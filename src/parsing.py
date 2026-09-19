@@ -1,6 +1,6 @@
 from src.models import FunctionDefinition, TestPrompt
+from typing import Any, List, Optional, Tuple
 from pydantic import ValidationError
-from typing import List, Any
 from pathlib import Path
 
 import argparse
@@ -12,7 +12,7 @@ class ParsingErr(Exception):
 
 
 class Parser:
-    def parse_args() -> argparse.Namespace:
+    def parse_args(self) -> argparse.Namespace:
         parser = argparse.ArgumentParser(
             prog="src",
             description="Run function-calling tests against function definitions.",
@@ -36,7 +36,6 @@ class Parser:
             help="Path to write the output JSON file.",
         )
         return parser.parse_args()
-
 
     @staticmethod
     def load_json_file(path: str) -> Any:
@@ -71,16 +70,15 @@ class Parser:
         except ValidationError as e:
             raise ParsingErr(f"Invalid test prompt in {path}: {e}") from e
 
-
-    def parsing() -> List:
-        args = Parser.parse_args()
+    def parsing(self) -> Optional[Tuple[List[Any], List[Any], Path]]:
+        args = Parser.parse_args(self)
 
         try:
             functions = Parser.parse_functions_definition(args.functions_definition)
             tests = Parser.parse_function_calling_tests(args.input)
         except ParsingErr as e:
             print(f"Error: {e}")
-            return []
+            return None
 
         results = []
         for test in tests:
@@ -93,6 +91,6 @@ class Parser:
                 json.dump(results, f, indent=2)
         except OSError as e:
             print(f"Error in output file :\n{e}")
-            return []
+            return None
 
-        return [functions, tests, output_path]
+        return (functions, tests, output_path)

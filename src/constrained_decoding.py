@@ -1,5 +1,5 @@
 import json
-from typing import Dict, List
+from typing import Dict, List, Any
 
 from llm_sdk.llm_sdk import Small_LLM_Model
 from src.models import FunctionDefinition
@@ -7,7 +7,7 @@ from src.models import FunctionDefinition
 
 class TokenTrie:
     def __init__(self, words: List[str]) -> None:
-        self.root: dict = {}
+        self.root: Dict[str, Any] = {}
         for word in words:
             node = self.root
             for ch in word:
@@ -44,7 +44,8 @@ class ConstrainedDecoder:
         except (OSError, json.JSONDecodeError):
             return {}
 
-    def select_function(self, prompt: str, functions: List[FunctionDefinition]) -> FunctionDefinition:
+    def select_function(self, prompt: str,
+                        functions: List[FunctionDefinition]) -> FunctionDefinition:
         if len(functions) == 1:
             return functions[0]
         trie = TokenTrie([fn.name for fn in functions])
